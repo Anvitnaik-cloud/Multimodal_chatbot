@@ -59,9 +59,9 @@ Running the App
 ---
 🔒 Workflow
    
-    Current Username : Anvit
+     Current Username : Anvit
     
-    Password : a
+     Password : a
 
 1.  **Login Screen:** You must successfully log in using a registered username and password from your MongoDB collection.
 2.  **Main Chat Interface:**

@@ -1,0 +1,15 @@
+ Multimodal Chatbot with Streamlit and MongoDBA secure, full-featured Multimodal Chatbot application developed in Python using Streamlit for the frontend, Google's Gemini API for core AI intelligence, and MongoDB Atlas for secure user authentication.✨ FeaturesSecure Authentication: User login required before accessing the chat interface. Credentials are verified against a MongoDB Atlas collection using SHA256 hashing for passwords.Multimodal AI: Utilizes the Gemini 2.5 Flash API to handle both standard text conversations and analyze uploaded images (.jpg, .png).Interactive UI: Built entirely with Streamlit for a simple, responsive, and dynamic user experience.Session Management: Maintains chat history within the user's active session and allows users to clear the history or log out.Configuration: Uses the dotenv library to securely load API keys and database URIs from a .env file.🛠️ Technologies UsedCategoryTechnologyDependencyApp FrameworkStreamlitstreamlitAI ModelGoogle Gemini APIrequestsDatabaseMongoDB AtlaspymongoUtilitiesPythonpython-dotenv, Pillow, hashlib🚀 Getting StartedFollow these steps to set up and run the chatbot on your local machine.PrerequisitesPython 3.8+Gemini API Key: Obtain one from Google AI Studio.MongoDB Atlas Cluster: Set up a cluster and get the connection URI.Required Dependencies:Bashpip install streamlit requests python-dotenv Pillow pymongo
+ConfigurationCreate a .env File:In your project root directory, create a file named .env and add your credentials:Ini, TOML# .env
+GEMINI_API_KEY="YOUR_API_KEY_HERE"
+MONGO_URI="mongodb+srv://[username]:[password]@[cluster_url]/?retryWrites=true&w=majority"
+Configure MongoDB:The script targets the database name defined by DB_NAME (sample_mflix) and the collection name defined by COLLECTION_NAME (User_credentials).Ensure your User_credentials collection contains documents with the following structure:JSON{
+  "username": "testuser",
+  "name": "Test User",
+  "password_hash": "e6da5a968601c23..." // SHA256 hash of the password
+}
+
+The current Username : Anvit
+password : a
+The application uses SHA256 to hash the submitted login password for verification against the stored password_hash.Running the AppExecute the Streamlit application:Bashstreamlit run [YOUR_PYTHON_SCRIPT_NAME].py
+The application will launch in your web browser (typically at http://localhost:8501).🔒 Usage & WorkflowLogin Screen: You must successfully log in using a registered username and password from your MongoDB collection.Main Chat Interface:Text Chat: Type your prompt in the chat box at the bottom.Image Input: Use the Upload File section in the sidebar to upload an image. Your next prompt will be sent along with the image for multimodal analysis.Sidebar Controls:Logout: Clears the session state and returns to the login screen.Clear History: Empties the current chat log.📂 Project Structure├── .env                      # Contains private API keys and URI
+└── [YOUR_PYTHON_SCRIPT_NAME].py # Main Streamlit application file
